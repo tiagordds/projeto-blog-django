@@ -1,5 +1,17 @@
 {% extends 'blog/base.html' %} 
 
+{% block additional_head %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/python/python.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/javascript/javascript.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/css/css.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/xml/xml.min.js"></script>
+{% endblock additional_head %}
+
 {% block content %}
 <main class="main-content single-post section-wrapper">
   <div class="single-post-content section-content-narrow">
@@ -40,7 +52,7 @@
           <span class="post-meta-link">
             <i class="fa-solid fa-calendar-days"></i>
             <span>
-              20/04/2023
+              {{ post.created_at| date:"d/m/Y \á\s H:i" }}
             </span>
           </a>
         </div>
@@ -63,15 +75,13 @@
       </div>
 
       <p class="single-post-excerpt pb-base">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, vero
-        fugiat eum perferendis accusamus enim quos obcaecati. Voluptates a vel
-        obcaecati ipsa in dignissimos facere odio et, ab provident assumenda!
+        {{ post.excerpt | safe }}
       </p>
 
       <div class="separator"></div>
 
       <div class="single-post-content">
-        {% include 'blog/partials/_temp.html' %} 
+        {{ post.content | safe }}
       
         <div class="post-tags">
           <span>Tags: </span>
