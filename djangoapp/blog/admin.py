@@ -1,7 +1,7 @@
+from blog.models import Category, Page, Post, Tag
 from django.contrib import admin
-from blog.models import Tag, Category, Page, Post
-from django_summernote.admin import SummernoteModelAdmin
 from django.utils.safestring import mark_safe
+from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Tag)
@@ -53,8 +53,10 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = 'category', 'is_published',
     list_editable = 'is_published',
     ordering = '-id',
-    readonly_fields = ('created_at', 'updated_at', 'created_by', 'updated_by',
-                       'link')
+    readonly_fields = (
+        'created_at', 'updated_at', 'created_by', 'updated_by',
+        'link',
+    )
     prepopulated_fields = {
         "slug": ('title',),
     }
@@ -73,9 +75,8 @@ class PostAdmin(SummernoteModelAdmin):
 
     def save_model(self, request, obj, form, change):
         if change:
-            obj.updated_by = request.user
-
+            obj.updated_by = request.user  # type: ignore
         else:
-            obj.created_by = request.user
+            obj.created_by = request.user  # type: ignore
 
         obj.save()
