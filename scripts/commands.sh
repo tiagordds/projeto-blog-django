@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# O shell irá encerrar a execução do script quando um comando falhar
+# O shell irá encerrar a execução do script para quando tiver alguma falha
 set -e
 
 

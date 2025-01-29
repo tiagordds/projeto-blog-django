@@ -5,6 +5,8 @@ from utils.images import resize_image
 from django_summernote.models import AbstractAttachment
 from django.urls import reverse
 
+# Models
+
 
 class PostAttachment(AbstractAttachment):
     def save(self, *args, **kwargs):
