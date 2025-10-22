@@ -2,7 +2,7 @@
 A fully functional blog application built with Django. This project allows users to create, read, update, and delete blog posts, as well as interact with categories and tags.
 
 ## Features
-- User Authentication: Register, log in, and log out functionality.
+- User Authentication: Register, log in, and log out functionality
 
 - Blog Posts: Create, edit, delete, and view blog posts.
 
