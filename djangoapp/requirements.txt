@@ -1,4 +1,4 @@
 Django==4.2.6
-psycopg2-binary==2.9.9
-Pillow==9.5.0
+psycopg-binary
+Pillow
 django-summernote==0.8.20.0
