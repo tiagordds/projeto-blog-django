@@ -1,8 +1,7 @@
 FROM python:3.11.3-alpine3.18
 LABEL mantainer="yutri.trds@gmail.com"
 
-# Essa variável de ambiente é usada para controlar se o Python deve 
-# gravar arquivos de bytecode (.pyc) no disco. 1 = Não, 0 = Sim
+
 ENV PYTHONDONTWRITEBYTECODE 1
 
 # Define que a saída do Python será exibida imediatamente no console ou em 
@@ -39,12 +38,11 @@ RUN python -m venv /venv && \
   chmod -R 755 /data/web/media && \
   chmod -R +x /scripts
 
-# Adiciona a pasta scripts e venv/bin 
-# no $PATH do container.
-ENV PATH="/scripts:/venv/bin:$PATH"
 
-# Muda o usuário para duser
+ENV PATH='/scripts:/venv/bin:$PATH'
+
+
 USER duser
 
-# Executa o arquivo scripts/commands.sh
+
 CMD ["commands.sh"]
